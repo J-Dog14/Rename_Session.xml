@@ -42,7 +42,21 @@ cursor.execute('''
        Pelvis_Ang_Velo REAL,
        Torso_Ang_Velo REAL,
        Arm_Ang_Velo REAL,
-       MPH REAL
+       MPH REAL,
+       Trunk_Ang_MER REAL,
+       Trunk_Ang_Rel REAL,
+       Pelvis_Ang_MER REAL,
+       Pelvis_Ang_Rel REAL,
+       HSS_MER REAL,
+       HSS_Rel REAL,
+       Front_Leg_Footplant REAL,
+       Front_Leg_MER REAL,
+       Front_Leg_Rel REAL,
+       Abduction_Max REAL,
+       Hand_Ang_Velo REAL,
+       Stride_Length REAL,
+       Arm_Slot REAL,
+       Weight REAL
    )
 ''')
 
@@ -102,6 +116,20 @@ while True:
                             pelvis_ang_velo = None
                             torso_ang_velo = None
                             arm_ang_velo = None
+                            Trunk_Ang_MER = None
+                            Trunk_Ang_Rel = None
+                            Pelvis_Ang_MER = None
+                            Pelvis_Ang_Rel = None
+                            HSS_MER = None
+                            HSS_Rel = None
+                            lead_knee_ang_at_footstrike = None
+                            Front_Leg_MER = None
+                            lead_knee_ang_at_release = None
+                            Abduction_Max = None
+                            Hand_Ang_Velo = None
+                            Stride_Length = None
+                            Arm_Slot = None
+                            Weight = None
 
                             # Extract the value of "owner"
                             pitch_value = fastball_owner.get('value', '')
@@ -116,10 +144,24 @@ while True:
                                     linear_pelvis_speed = float(component_y_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Hip Shoulders Sep@Footstrike" and component_z_element is not None:
                                     hss_footplant = float(component_z_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Pitching_Shoulder_Angle@Release" and component_x_element is not None:
+                                    Arm_Slot = float(component_x_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Hip Shoulders Sep@Max_Shoulder_Rot" and component_z_element is not None:
+                                    HSS_MER = float(component_z_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Hip Shoulders Sep@Release" and component_z_element is not None:
+                                    HSS_Rel = float(component_z_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Pelvis_Angle@Footstrike" and component_z_element is not None:
                                     pelvis_ang_fp = float(component_z_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Pelvis_Angle@Max_Shoulder_Rot" and component_z_element is not None:
+                                    Pelvis_Ang_MER = float(component_z_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Pelvis_Angle@Release" and component_z_element is not None:
+                                    Pelvis_Ang_Rel = float(component_z_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Trunk_Angle@Footstrike" and component_z_element is not None:
                                     trunk_ang_fp = float(component_z_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Trunk_Angle@Max_Shoulder_Rot" and component_z_element is not None:
+                                    Trunk_Ang_MER = float(component_z_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Trunk_Angle@Release" and component_z_element is not None:
+                                    Trunk_Ang_Rel = float(component_z_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Lead_Knee_Angle@Footstrike" and component_x_element is not None:
                                     lead_knee_ang_at_footstrike = float(
                                         component_x_element.attrib['data'].replace(',', '.'))
@@ -129,6 +171,8 @@ while True:
                                     front_leg_brace = lead_knee_ang_at_footstrike - lead_knee_ang_at_release
                                 if variable_name == "Lead_Knee_Angle@Footstrike" and component_y_element is not None:
                                     lead_knee_var_val_fp = float(component_y_element.attrib['data'].replace(',', '.'))
+                                if variable_name == "Lead_Knee_Angle@Max_Shoulder_Rot" and component_x_element is not None:
+                                    Front_Leg_MER = float(component_x_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Lead_Knee_Angle@Release" and component_y_element is not None:
                                     lead_knee_var_val_rel = float(component_y_element.attrib['data'].replace(',', '.'))
                                     # Calculate the difference and store in front_leg_var_val
@@ -161,14 +205,22 @@ while True:
                                         shld_er_fp = float(component_z_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Pitching_Shoulder_Angle_Max" and component_z_element is not None:
                                     shld_er_max = abs(float(component_z_element.attrib['data'].replace(',', '.')))
+                                elif variable_name == "Pitching_Shoulder_Angle_Min" and component_x_element is not None:
+                                    Abduction_Max = abs(float(component_x_element.attrib['data'].replace(',', '.')))
                                 elif variable_name == "Trunk_wrt_Pelvis_FE@Release" and component_y_element is not None:
                                     lateral_trunk_tilt = float(component_y_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Pelvis_Ang_Vel_max" and component_x_element is not None:
                                     pelvis_ang_velo = float(component_x_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Thorax_Ang_Vel_max" and component_x_element is not None:
                                     torso_ang_velo = float(component_x_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Pitching_Hand_Ang_Vel_max" and component_x_element is not None:
+                                    Hand_Ang_Velo = float(component_x_element.attrib['data'].replace(',', '.'))
                                 elif variable_name == "Pitching_Humerus_Ang_Vel_max" and component_x_element is not None:
                                     arm_ang_velo = float(component_x_element.attrib['data'].replace(',', '.'))
+                                elif variable_name == "Pitching_Shoulder_Angle_Max" and component_z_element is not None:
+                                    shld_er_max = abs(float(component_z_element.attrib['data'].replace(',', '.')))
+                                elif variable_name == "STRIDE_LENGTH" and component_x_element is not None:
+                                    Stride_Length = abs(float(component_x_element.attrib['data'].replace(',', '.')))
 
                                 linear_pelvis_speed = linear_pelvis_speed if linear_pelvis_speed is not None else 4
                                 hss_footplant = hss_footplant if hss_footplant is not None else 30
@@ -177,7 +229,7 @@ while True:
                                 pelvis_obl = pelvis_obl if pelvis_obl is not None else 2
                                 front_leg_brace = front_leg_brace if front_leg_brace is not None else 8
                                 front_leg_var_val = front_leg_var_val if front_leg_var_val is not None else 0
-                                lead_leg_midpoint = lead_leg_midpoint if lead_leg_midpoint is not None else 2
+                                lead_leg_midpoint = lead_leg_midpoint if lead_leg_midpoint is not None else 1.5
                                 lead_leg_grf_y = lead_leg_grf_y if lead_leg_grf_y is not None else .7
                                 lead_leg_grf_z = lead_leg_grf_z if lead_leg_grf_z is not None else 1.5
                                 lead_leg_grf_x = lead_leg_grf_x if lead_leg_grf_x is not None else .25
@@ -189,7 +241,7 @@ while True:
                                 torso_ang_velo = torso_ang_velo if torso_ang_velo is not None else 1000
                                 arm_ang_velo = arm_ang_velo if arm_ang_velo is not None else 5000
 
-                                # Insert the data into the database
+                            # Insert the data into the database
                             cursor.execute('''
                                INSERT INTO variables (
                                    session_data_id,
@@ -213,13 +265,32 @@ while True:
                                    Pelvis_Ang_Velo,
                                    Torso_Ang_Velo,
                                    Arm_Ang_Velo,
-                                   MPH
-                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                   MPH,
+                                   Trunk_Ang_MER,
+                                   Trunk_Ang_Rel,
+                                   Pelvis_Ang_MER,
+                                   Pelvis_Ang_Rel,
+                                   HSS_MER,
+                                   HSS_Rel,
+                                   Front_Leg_Footplant,
+                                   Front_Leg_MER,
+                                   Front_Leg_Rel,
+                                   Abduction_Max,
+                                   Hand_Ang_Velo,
+                                   Stride_Length,
+                                   Arm_Slot,
+                                   Weight
+                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                            ''', (
-                            session_data_id, file_name, pitch_value, linear_pelvis_speed, hss_footplant, pelvis_ang_fp,
-                            trunk_ang_fp, pelvis_obl, front_leg_brace, front_leg_var_val, lead_leg_midpoint, lead_leg_grf_y,
-                            lead_leg_grf_z, lead_leg_grf_x, horizontal_abduction, shld_er_fp, shld_er_max,
-                            lateral_trunk_tilt, pelvis_ang_velo, torso_ang_velo, arm_ang_velo, None))
+                                session_data_id, file_name, pitch_value, linear_pelvis_speed, hss_footplant,
+                                pelvis_ang_fp,
+                                trunk_ang_fp, pelvis_obl, front_leg_brace, front_leg_var_val, lead_leg_midpoint,
+                                lead_leg_grf_y,
+                                lead_leg_grf_z, lead_leg_grf_x, horizontal_abduction, shld_er_fp, shld_er_max,
+                                lateral_trunk_tilt, pelvis_ang_velo, torso_ang_velo, arm_ang_velo, None, Trunk_Ang_MER,
+                                Trunk_Ang_Rel, Pelvis_Ang_MER, Pelvis_Ang_Rel, HSS_MER, HSS_Rel,
+                                lead_knee_ang_at_footstrike, Front_Leg_MER, lead_knee_ang_at_release, Abduction_Max,
+                                Hand_Ang_Velo, Stride_Length, Arm_Slot, Weight))
 
                             # Increment the count of new data entries
                             new_data_entries += 1
@@ -244,7 +315,6 @@ print("Data inserted into the database.")
 
 # Successfully adds MPH to the appropriate spot in the database
 
-
 # Connect to the database
 conn = sqlite3.connect("grading_equation_reference_data_HS.db")
 cursor = conn.cursor()
@@ -257,6 +327,7 @@ xml_files = [os.path.join(directory_path, file) for file in os.listdir(directory
 # Track the number of new data entries
 new_data_entries = 0
 
+# Parse the XML files
 for file_name in xml_files:
     try:
         # Check if the file has already been processed
@@ -277,6 +348,10 @@ for file_name in xml_files:
 
             # Check if session_data_id is None, and skip the file if it is
             if session_data_id is not None:
+                # Extract Weight
+                weight_element = root.find('./Fields/Weight')
+                weight = float(weight_element.text) if weight_element is not None else None
+
                 # Iterate over all occurrences of "Measurement" element
                 for measurement_element in root.findall('.//Measurement'):
                     pitch_value = measurement_element.get('Filename')
@@ -290,24 +365,23 @@ for file_name in xml_files:
                         print(f"Filename: {pitch_value}, Used: {used_element.text}")
 
                         if 'Fastball' in pitch_value and used_element.text == 'True':
-                            # Extract the values of "Comments" and "Ball_speed"
+                            # Extract the values of "Comments" (MPH)
                             comments_value_element = measurement_element.find('./Fields/Comments')
 
+                            mph_value = None
                             if comments_value_element is not None:
-                                print(f"MPH: {comments_value_element.text}")
-                                print(f"Session ID: {session_data_id}")
-
                                 mph_value = float(comments_value_element.text)
+                                print(f"MPH: {mph_value}, Weight: {weight}, Session ID: {session_data_id}")
 
-                                # Update the MPH value in the "variables" table
-                                cursor.execute('''
-                                   UPDATE variables
-                                   SET MPH = ?
-                                   WHERE session_data_id = ? AND Pitch = ?
-                               ''', (mph_value, session_data_id, pitch_value))
+                            # Update the MPH and Weight values in the "variables" table
+                            cursor.execute('''
+                                UPDATE variables
+                                SET MPH = ?, Weight = ?
+                                WHERE session_data_id = ? AND Pitch = ?
+                            ''', (mph_value, weight, session_data_id, pitch_value))
 
-                                # Increment the new data entries counter
-                                new_data_entries += 1
+                            # Increment the new data entries counter
+                            new_data_entries += 1
                     else:
                         print("Filename or Used element not found.")
 
@@ -316,6 +390,41 @@ for file_name in xml_files:
 
 # Commit the changes
 conn.commit()
+
+cursor.execute('SELECT id, Weight, Lead_Leg_Midpoint, Lead_Leg_GRF_y, Lead_Leg_GRF_z, Lead_Leg_GRF_x FROM variables')
+rows = cursor.fetchall()
+
+for row in rows:
+    id, weight, midpoint, grf_y, grf_z, grf_x = row
+
+    # Set Weight to 195 if it is None
+    if weight is None or weight <= 0:
+        weight = 88
+
+    # Calculate the adjustment factor based on Weight
+    adjustment_factor = weight * 9.81
+
+    # Adjust values if they are above 4
+    if midpoint and midpoint > 4:
+        midpoint /= adjustment_factor
+    if grf_y and grf_y > 4:
+        grf_y /= adjustment_factor
+    if grf_z and grf_z > 4:
+        grf_z /= adjustment_factor
+    if grf_x and grf_x > 4:
+        grf_x /= adjustment_factor
+
+    # Update the database with the adjusted values
+    cursor.execute('''
+        UPDATE variables
+        SET Lead_Leg_Midpoint = ?, Lead_Leg_GRF_y = ?, Lead_Leg_GRF_z = ?, Lead_Leg_GRF_x = ?, Weight = ?
+        WHERE id = ?
+    ''', (midpoint, grf_y, grf_z, grf_x, weight, id))
+
+# Commit the adjusted values
+conn.commit()
+
+print("Ground reaction forces adjusted based on Weight.")
 
 # Close the connection
 conn.close()
