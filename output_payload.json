@@ -1,0 +1,238 @@
+{
+    "athleteUuid": "",
+    "level": "",
+    "score": 225.53856805998277,
+    "metrics": [
+        {
+            "category": "SUBJECT_METRICS",
+            "name": "SCORE",
+            "value": 225.53856805998277,
+            "valueUnit": "NUMBER",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "TRACKMAN_METRICS",
+            "name": "VELOCITY",
+            "value": 85.7,
+            "valueUnit": "MPH",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "PELVIS_ROTATION",
+            "name": "FOOT_PLANT",
+            "value": 41.56028,
+            "valueUnit": "DEGREES",
+            "orientation": "LOWER_IS_BETTER"
+        },
+        {
+            "category": "PELVIS_ROTATION",
+            "name": "MAX_ER",
+            "value": -7.898221,
+            "valueUnit": "DEGREES",
+            "orientation": "LOWER_IS_BETTER"
+        },
+        {
+            "category": "PELVIS_ROTATION",
+            "name": "RELEASE",
+            "value": -11.84569,
+            "valueUnit": "DEGREES",
+            "orientation": "LOWER_IS_BETTER"
+        },
+        {
+            "category": "TRUNK_POSITION",
+            "name": "FOOT_PLANT",
+            "value": 78.46791,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "TRUNK_POSITION",
+            "name": "MAX_ER",
+            "value": -6.475415,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "TRUNK_POSITION",
+            "name": "RELEASE",
+            "value": -12.76353,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "HIP_SHOULDER_SEPARATION",
+            "name": "FOOT_PLANT",
+            "value": 35.75547,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "HIP_SHOULDER_SEPARATION",
+            "name": "MAX_ER",
+            "value": -2.927888,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "HIP_SHOULDER_SEPARATION",
+            "name": "RELEASE",
+            "value": -10.4013,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "FRONT_LEG",
+            "name": "FOOT_PLANT",
+            "value": 43.0597,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "FRONT_LEG",
+            "name": "MAX_ER",
+            "value": 42.19864,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "FRONT_LEG",
+            "name": "RELEASE",
+            "value": 25.75216,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "SHOULDER_ER",
+            "name": "FOOT_PLANT",
+            "value": 46.41431,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "SHOULDER_ER",
+            "name": "MAX",
+            "value": 183.209,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "ABDUCTION",
+            "name": "FOOT_PLANT",
+            "value": 58.19155,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "ABDUCTION",
+            "name": "MAX",
+            "value": 59.1596,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "KINEMATIC_SEQUENCE",
+            "name": "PELVIS",
+            "value": 685.5435,
+            "valueUnit": "DEGREES_PER_SECOND",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "KINEMATIC_SEQUENCE",
+            "name": "TORSO",
+            "value": 925.7263,
+            "valueUnit": "DEGREES_PER_SECOND",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "KINEMATIC_SEQUENCE",
+            "name": "ARM",
+            "value": 6053.024,
+            "valueUnit": "DEGREES_PER_SECOND",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "KINEMATIC_SEQUENCE",
+            "name": "HAND",
+            "value": 5861.312,
+            "valueUnit": "DEGREES_PER_SECOND",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "LATERAL_TILT",
+            "name": "TRANSLATION",
+            "value": 2.5119930000000004,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "FRONT_LEG",
+            "name": "EXTENSION",
+            "value": 17.30754,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "FRONT_LEG",
+            "name": "TRANSLATION",
+            "value": 0.8549600000000002,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "GRF",
+            "name": "MID_POINT",
+            "value": 2.534460751996553,
+            "valueUnit": "N_BW",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "GRF",
+            "name": "X_DIR",
+            "value": 0.42439847796690167,
+            "valueUnit": "N_BW",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "GRF",
+            "name": "Y_DIR",
+            "value": 1.2964402137226945,
+            "valueUnit": "N_BW",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "GRF",
+            "name": "Z_DIR",
+            "value": 2.158606458214901,
+            "valueUnit": "N_BW",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "LATERAL_TILT",
+            "name": "RELEASE",
+            "value": 35.99826,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "LINEAR_VELOCITY",
+            "name": "MAX",
+            "value": 5.365491,
+            "valueUnit": "MPH",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "SUBJECT_METRICS",
+            "name": "RELEASE",
+            "value": 0.9510648,
+            "valueUnit": "DEGREES",
+            "orientation": "HIGHER_IS_BETTER"
+        },
+        {
+            "category": "SUBJECT_METRICS",
+            "name": "WEIGHT",
+            "value": 83.46056366,
+            "valueUnit": "LBS",
+            "orientation": "HIGHER_IS_BETTER"
+        }
+    ]
+}
